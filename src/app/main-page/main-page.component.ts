@@ -18,7 +18,6 @@ export class MainPageComponent implements OnInit {
       this.itemManager.getAllItems().subscribe(
         msg => {
           this.stock = msg;
-          console.log(msg)
         },
         error =>{
           console.log(error)
