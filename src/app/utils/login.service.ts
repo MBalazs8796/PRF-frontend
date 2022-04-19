@@ -26,4 +26,8 @@ export class LoginService {
       password: password
     }, {withCredentials: true, responseType: "text"})
   }
+
+  getUser(email: string){
+    return this.http.get(environment.serverAdress +"users/"+ email, {withCredentials: true})
+  }
 }

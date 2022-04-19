@@ -11,6 +11,9 @@ import { RegisterComponent } from './register/register.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { StockUpdatePageComponent } from './stock-update-page/stock-update-page.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import { UpdateItemComponent } from './update-item/update-item.component';
+import { AddItemComponent } from './add-item/add-item.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { PurchaseComponent } from './purchase/purchase.component';
     RegisterComponent,
     MainPageComponent,
     StockUpdatePageComponent,
-    PurchaseComponent
+    PurchaseComponent,
+    UpdateItemComponent,
+    AddItemComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,

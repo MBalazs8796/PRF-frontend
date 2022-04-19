@@ -1,28 +1,25 @@
 <div class="content" role="main">
 
-  <a [routerLink]="['/login']">logout</a>
-  <a [routerLink]="['/stockUpdater']">update stock</a>
-  <a [routerLink]="['/userInfo']">check your information!</a>
-
-  <h2>List of all the items:</h2>
+  <h2>Add a new item</h2>
 
   <div>
-    <div *ngFor="let item of stock">
-      <div *ngIf="item.amount>0">
-        <div>
-          <h3>Name:</h3>
-          <h4>{{item.name}}</h4>
-          <h3>Cost:</h3>
-          <h4>{{item.cost}}</h4>
-          <h3>Available amount:</h3>
-          <h4>{{item.amount}}</h4>
-        </div>
-        <a [routerLink]="['/purchase', {name: item.name, cost: item.cost, amount: item.amount}]" routerLinkActive="router-link-active" ><button>Buy some!</button></a>
-        <br>
-        <br>
-        <br>
-    </div>
-    </div>
+    <label>Item name</label>
+    <input type="text" id="name" [(ngModel)]="name">
+  </div>
+  <div>
+    <label>Item cost</label>
+    <input type="number" id="cost" [(ngModel)]="cost">
+  </div>
+  <div>
+    <label>Item amount</label>
+    <input type="number" id="amount" [(ngModel)]="amount">
+  </div>
+  <button (click)="add()">Add item</button>
+
+  <div *ngIf="errorMsg!=''" id="error-msg" class="card highlight-card card-small">
+
+    <span>{{errorMsg}}</span>
+
   </div>
   <!-- Footer -->
   <footer>

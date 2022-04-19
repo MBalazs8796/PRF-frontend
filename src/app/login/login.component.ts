@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
   errorMsg: string;
+  usr: any;
 
   constructor(private loginService: LoginService, private router: Router) {
     this.email = '';
@@ -25,6 +26,12 @@ export class LoginComponent implements OnInit {
         (msg) =>{
           console.log(msg);
           localStorage.setItem('email', this.email);
+          this.loginService.getUser(this.email).subscribe(
+            user => {
+              this.usr = user;
+              this.saveAdmin();
+            }
+          )
           this.router.navigate(['/mainPage']);
         },
         error => {
@@ -35,9 +42,14 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  saveAdmin(){
+    localStorage.setItem('isAdmin', this.usr['isAdmin'])
+  }
+
   ngOnInit(): void {
     if(localStorage.getItem('email')){
         localStorage.removeItem('email');
+        localStorage.removeItem('isAdmin');
         this.loginService.logout().subscribe(
           (msg) =>{
             console.log(msg);
